@@ -1,0 +1,153 @@
+
+.begin_jm1{
+	width:50%;
+	height:100%;
+	background:url('../images/bj1.jpg');
+	position:absolute;
+	z-index:105;
+}
+.begin_jm2{
+	width:50%;
+	height:100%;
+	background:url('../images/bj1.jpg') 960px 0px;
+	position:absolute;
+	left:50%;
+	z-index:105;
+}
+.begin_an{
+	width:100px;
+	height:50px;
+	position:absolute;
+	top:50%;
+	left:50%;
+	background:#aaa;
+	line-height:50px;
+	text-align:center;
+	margin-left:-50px;
+	margin-top:-25px;
+	opacity:0.3;
+	z-index:105;
+}
+.tip{
+    width: 120px;
+    height: 52px;
+    right: 0px;
+    position: absolute;
+    background: url("../images/绿色背景.png") no-repeat 0px 0px/ 100% auto;
+}
+
+/*动画*/
+/*动画容器*/
+#effects{
+    position: absolute;
+    /*background: rgba(0,0,0,.2);*/
+    width: 100%;
+    height: 100%;
+    z-index: 3333;
+    display: none;
+}
+#effects div{
+    position: absolute;
+    display: none;
+}
+/*顺子*/
+.straight{
+    width: 500px;
+    height: 400px;
+    left: 36%;
+    top: 50%;
+    background: url("../images/sl7140839.png") no-repeat 0 0 / 100% 100%;
+}
+/*连对*/
+.evenOn{
+    width: 500px;
+    height: 400px;
+    left: 36%;
+    top: 35%;
+    background: url("../images/连队.png") no-repeat 0 0 / 100% 100%;
+}
+/*火花*/
+.floor{
+    height: 600px;
+    width: 600px;
+    z-index: 9999999;
+    bottom: 0px;
+    background: url("../images/火花.gif")no-repeat center/100% ;
+}
+/*飞机*/
+.plane{
+    width: 300px;
+    height: 260px;
+    top: 25%;
+    left: 70%;
+    /*background: url("../images/飞机.png") no-repeat 0 0 / 100% 100%;*/
+    background: url("../images/plane.png") no-repeat center;
+}
+/*炸弹*/
+.bomb{
+    width: 150px;
+    height: 300px;
+    top: -300px;
+    left: 42%;
+    background: url("../images/炸弹.png") no-repeat 0 0 / 100% 100%;
+}
+/*王炸*/
+.bombKing{
+    width: 250px;
+    height: 450px;
+    top: 500px;
+    left: 42%;
+    /*background: url("../images/王炸.png") no-repeat 0 0 / 100% 100%;*/
+    background: url("../images/kingbom.png") no-repeat center;
+}
+/*积分*/
+.branch{
+    width: 140px;
+    height: 32px;
+    position: absolute;
+    line-height: 32px;
+    text-indent: 2em;
+    top: 70px;
+    background:black;
+    border-radius:10px;
+    opacity:0.5;
+}
+#sp1{
+    color:white;
+    position:relative;
+    top:50px;
+    left:30px;
+}
+#sp2{
+    color:white;
+    position:relative;
+    top:-40px;
+    left:160px;
+}
+#sp3{
+    color:white;
+    position:relative;
+    top:50px;
+    left:310px;
+}
+#do{
+    width:25px;
+    height:25px;
+    background:url('../images/do1.png');
+    /*z-index:100;*/
+    display:block;
+    position:absolute;
+    left:-30px;
+    z-index:1;
+}
+.jy{
+    width:40px;
+    height:30px;
+    background:url('../images/静音_mute31.png');
+    background-size:40px 30px;
+    position:absolute;
+    /*margin-top:50px;*/
+    top:30px;
+    left:50px;
+    z-index:150;
+}

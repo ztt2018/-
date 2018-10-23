@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head>
+	<title>斗地主</title>
+	<style type="text/css">
+
+	*{
+		margin: 0px;
+		padding: 0px;
+	}
+	body{
+		background-image: url('./images/135.jpg') ;
+		background-size:100% 1080px;
+		overflow: hidden;
+		perspective:800px;
+	}
+	li{
+		list-style: none;
+	}
+	.left{
+		width:22%;
+		height: 800px;
+		float: left;
+		/*background: red;*/
+		position:relative;
+	}
+	.mid{
+		width:56%;
+		height: 800px;
+		float: left;
+		/*background: blue;*/
+		position:relative;
+	}
+	.mid_top{
+		width: 100%;
+		height: 360px;
+		float: left;
+		/*background: #000;*/
+	}
+
+	.mid_desktop{
+		width:100%;
+		height:200px;
+		float: left;
+		/*border:1px solid pink;*/
+	}
+
+	.desktop_poker{
+		width:125px;
+		height: 175px;
+		margin: 12px auto 0px;
+		position:relative;
+		transform:perspective(600px) rotateX(40deg);
+	}
+	.desktop_poker li{
+		position:absolute;
+	}
+
+	.mid_end{
+		width: 100%;
+		height: 300px;
+		float: left;
+		/*background: #fff;*/
+	}
+	.right{
+		width:22%;
+		height: 800px;
+		float: right;
+		/*background: yellow;*/
+		position:relative;
+	}
+
+	.all_poker{
+		width: 125px;
+		height: 175px;
+		margin: 100px auto 0px;
+		position: relative;
+		/*background: #fff;*/
+	}
+	.all_poker li{
+		position: absolute;
+	}
+	.temp_poker{
+		width: 125px;
+		height: 175px;
+		margin: 100px auto 0px;
+		position: relative;
+	}
+	.back {
+		width:125px;
+		height: 175px;
+		/*background: url('./images/14.png') -87px -225px;*/
+		background: url('./images/21.jpg');
+		background-size:125px 175px;
+		position: absolute;
+		z-index: 93;
+		border-radius:10px; 
+	}
+	.play_1, .play_2, .play_3{
+		width:125px;
+		height: 175px;
+		margin: 150px auto 0px;
+		position: relative;
+	}
+	.play_1 li,.play_2 li,.play_3 li{
+		position: absolute;
+		cursor:pointer;
+	}
+
+	.play_btn, .play_btn2{
+		display: none;
+		text-align: center;
+		position:absolute;
+	}
+
+	.left .play_btn {
+		left:69%;
+		top:390px;
+	}
+	.left .play_btn2 {
+		left:71%;
+		top:390px;
+	}
+
+	.right .play_btn {
+		left:8%;
+		top:390px;
+	}
+	.right .play_btn2 {
+		left:8%;
+		top:390px;
+	}
+
+	.mid .play_btn {
+		left:42%;
+		top:640px;
+	}
+	.mid .play_btn2 {
+		left:40%;
+		top:640px;
+	}
+
+	.play_2 .select {
+		top:-20px;
+	}
+
+	.play_1 .select {
+		left:20px;
+	}
+
+	.play_3 .select {
+		left:-20px;
+	}
+	.get{
+		width:82px;
+		height:35px;
+		background:url('images/202.png') no-repeat;
+		background-size:80px 35px;
+		font-family:幼圆;
+		font-size:20px;
+		color:#fff;
+		text-shadow:2px 2px 2px #999;
+		border-color: transparent;  
+        box-shadow:none;
+		text-align:center;
+		line-height:25px;
+		outline:none;
+		font-weight:2px;
+		cursor:pointer;
+	}
+	/*.get:focus {
+		border-color: transparent;  
+        box-shadow:none;
+	}*/
+	.cancel{
+		width:82px;
+		height:35px;
+		background:url('images/201.png') no-repeat ;
+		background-size:80px 35px;
+		font-family:幼圆;
+		font-size:20px;
+		color:#fff;
+		text-shadow:2px 2px 2px #999;
+		border-color: transparent;  
+        box-shadow:none;
+		text-align:center;
+		line-height:25px;
+		outline:none;
+		cursor:pointer;
+	}
+
+	.play_out{
+		width:82px;
+		height:35px;
+		background:url('images/201.png') no-repeat;
+		background-size:80px 35px;
+		font-family:幼圆;
+		font-size:20px;
+		color:#fff;
+		text-shadow:2px 2px 2px #999;
+		border-color: transparent;  
+        box-shadow:none;
+		text-align:center;
+		line-height:25px;
+		outline:none;
+		cursor:pointer;
+	}
+	.pass{
+		width:82px;
+		height:35px;
+		background:url('images/201.png') no-repeat;
+		background-size:80px 35px;
+		font-family:幼圆;
+		font-size:20px;
+		color:#fff;
+		text-shadow:2px 2px 2px #999;
+		border-color: transparent;  
+        box-shadow:none;
+		text-align:center;
+		line-height:25px;
+		outline:none;
+		cursor:pointer;
+	}
+	.tips{
+		width:82px;
+		height:35px;
+		background:url('images/200.png') no-repeat ;
+		background-size:80px 35px;
+		font-family:幼圆;
+		font-size:20px;
+		color:#fff;
+		text-shadow:2px 2px 2px #999;
+		border-color: transparent;  
+        box-shadow:none;
+		text-align:center;
+		line-height:25px;
+		outline:none;
+		cursor:pointer;
+	}
+
+	#frist{
+		z-index:105;
+		width:100%;
+		height:1080px;
+		position:absolute;
+		left:-425px;
+		top:-250px;
+	}
+	#frist2{
+		z-index:105;
+		width:100%;
+		height:1080px;
+		position:absolute;
+		left:425px;
+		top:-250px;
+	}
+	#frist3{
+		z-index:105;
+		width:100%;
+		height:1080px;
+		position:absolute;
+		left:-425px;
+		top:250px;
+		transform:rotate(180deg);
+
+	}
+	#frist4{
+		z-index:105;
+		width:100%;
+		height:1080px;
+		position:absolute;
+		left:425px;
+		top:250px;
+		transform:rotate(180deg);
+	}
+	.logo{
+		width:200px;
+		height:500px;
+		background:url('images/92.png');
+		background-size:200px 500px;
+		position:absolute;
+		top:40%;
+		left:50%;
+		/*margin:-350px 0 0 -465px;*/
+	}
+	.logo>ul{
+		margin:-60px 0 0 70px;
+	}
+	.logo>ul>li:nth-of-type(1){
+		width:60px;
+		height:60px;
+		background:url('images/102.png');
+		/*position:absolute;*/
+		/*float:left;*/
+		margin:150px 0 0 145px;
+	}
+	.logo>ul>li:nth-of-type(2){
+		width:60px;
+		height:60px;
+		background:url('images/101.png');
+		/*position:absolute;*/
+		/*float:left;*/
+		margin:0px 0 0 100px;
+
+	}
+	.logo>ul>li:nth-of-type(3){
+		width:60px;
+		height:60px;
+		background:url('images/101.png');
+		/*position:absolute;*/
+		/*float:left;*/
+		margin:0px 0 0 145px;
+
+	}
+	.logo>ul>li:nth-of-type(4){
+		width:60px;
+		height:60px;
+		background:url('images/104.png');
+		/*position:absolute;*/
+		/*float:left;*/
+		margin:0px 0 0 100px;
+
+	}
+	.logo>ul>li:nth-of-type(5){
+		width:60px;
+		height:60px;
+		background:url('images/106.png');
+		/*position:absolute;*/
+		/*float:left;*/
+		margin:0px 0 0 145px;
+
+	}
+	.logo>ul>li:nth-of-type(6){
+		width:60px;
+		height:60px;
+		background:url('images/104.png');
+		/*position:absolute;*/
+		/*float:left;*/
+		margin:0px 0 0 100px;
+
+	}
+	.logo>ul>li:nth-of-type(7){
+		width:60px;
+		height:60px;
+		background:url('images/100.png');
+		/*position:absolute;*/
+		/*float:left;*/
+		margin:0px 0 0 145px;
+
+	}
+	.start{
+		width:300px;
+		height:150px;
+		background:url('images/122.png');
+		background-size:300px 150px;
+		position:absolute;
+		top:50%;
+		left:80%;
+		margin:100px 0 0 -150px;
+		z-index:104;
+		transform-style:preserve-3d;
+		animation: breath 1.5s ease-in infinite alternate;
+	}
+
+	.about{
+		width:300px;
+		height:150px;
+		background:url('images/123.png');
+		background-size:300px 150px;
+		position:absolute;
+		top:65%;
+		left:80%;
+		margin:100px 0 0 -150px;
+		z-index:104;
+	}
+	@keyframes breath {
+		0%{
+			transform:translateZ(-50px);
+		}
+		99%,100%{
+			transform:translateZ(10px);
+		}
+	}
+	.bj{
+		width:100%;
+		height:100%;
+		background-image: url('./images/123.jpg');
+		background-size:100% 1080px;
+		z-index:99;
+	}
+	
+	/*提示弹出框*/
+	.alertMsg{
+		width:300px; height:170px; position:absolute; top:50%; left:50%; margin-top:-85px; margin-left:-150px; background:#fff; display:none;z-index:120;}
+
+	.titl{display:block; font-size:14px; color:#444; padding:10px 15px; border-radius: 15px 15px 0 0;  font-weight:bold; }
+
+	.btn_ok{width:80px; height:30px; color:white; border:none; border-radius:4px; background:#41a259;text-align:center;margin:0px 110px; cursor:pointer;}
+	 
+	.msg{padding:20px; line-height:40px; text-align:center; font-size:18px; color:#4c4c4c;}
+
+	/*输赢框*/
+	.alertWind{
+		width:700px; height:700px; position:fixed; top:50%; left:31%;display: none;
+		 background: url('./images/66.png') 0px 0px;z-index:120;}
+	
+	.btn_close{width:49px; height:49px; position:fixed;top:50%; left:50%; background: url('./images/关闭按钮.png') 0px 0px;z-index:121;margin-top: 155px; margin-left: 125px;cursor:pointer;}
+	
+	.btn_again{width:284px; height:126px; position:fixed;background: url('./images/再来一局.png') 0px 0px;z-index:121;margin-top:450px; margin-left:190px;cursor:pointer;}
+
+	.alertWinn{
+		width:700px; height:700px; position:fixed;top:50%; left:31%;display: none;
+		 background: url('./images/65.png');z-index:120;}
+
+
+	.bg_wrap{width:100%;height:100%;background:rgba(0,0,0,0.5);position:fixed;z-index:110;display:none;}
+
+	.mid_role{width:150px;height:240px;position:absolute;}
+
+	.left .mid_role{width:180px;height:250px;top:160px;left:0px;background:url(./images/97.gif)no-repeat center;display:none;background-size:180px 250px;}
+
+	.mid .mid_role{width:180px;height:250px;bottom:-10%;left:10%;background:url(./images/97.gif)no-repeat center;background-size:180px 250px;}
+
+	.right .mid_role{width:180px;height:250px;top:160px;right:0px;background:url(./images/97.gif)no-repeat center;display:none;background-size:180px 250px;}
+
+	.timer1,.timer2{width:80px;height:82px;display:block;background:url(./images/time.png)no-repeat;position:absolute;top:-90px;text-align:center;line-height:90px;font-size:24px;}
+	.mid .timer1{top:-40px;left:-100px;}
+	.mid .timer2{top:-40px;left:-110px;}
+
+	/*小人*/
+	.people{
+		width: 80px;height: 120px;
+		position:absolute;
+		top: 88%;
+    	left: 89%;
+	}
+
+	/*图标*/
+	.icon{width:500px;height:60px;position:absolute;top:2%;right:-7%;cursor:pointer;z-index:1;display: none;}
+	.icon li{width:60px;height:60px;float:left;margin-right:10px;overflow:hidden;transition:all 0.6s;cursor:pointer;}
+	.icon li:hover{transform:scale(1.4);}
+	.icon_shop{background:url(./images/icon1.png);}
+	.icon_task{background:url(./images/icon2.png);}
+	.icon_active{background:url(./images/icon3.png);}
+	.icon_4{background:url(./images/icon4.png);}
+	.icon_5{background:url(./images/icon5.png);}
+
+
+	.midt{
+		width:800px;
+		height:800px;
+		background:url('images/59.png');
+		background-size:800px 800px;
+		position:absolute;
+		margin:65px 0 0 560px;
+		z-index:95;
+		display:none;
+	}
+	.midt>input{
+		position:relative;
+		top:450px;
+		left:300px;
+	}
+	.fg{
+		width:100%;
+		height:1080px;
+		display:none;
+		background:rgba(0,0,0,0.8);
+		position:absolute;
+		z-index:94;
+	}
+	.bgn{
+		width:150px;
+		height:75px;
+		background:url('images/61.png') no-repeat;
+		background-size:150px 75px;
+		border-color: transparent;  
+        box-shadow:none;
+		outline:none;
+	}
+	.stop{
+		width:150px;
+		height:75px;
+		background:url('images/62.png') no-repeat;
+		background-size:150px 75px;
+		border-color: transparent;  
+        box-shadow:none;
+		outline:none;
+	}
+	</style>
+	<script type="text/javascript" src="./js/jquery-3.3.1.min.js"></script>
+	<script type="text/javascript" src="./js/game.js"></script>
+	<script type="text/javascript" src="./js/tips.js"></script>
+	<link rel="stylesheet" href="css/index.css" type="text/css"/>
+</head>
+<body>
+	<div class="bg_wrap"></div>
+	<!-- 游戏界面 -->
+	<img id="frist" src="images/666.png" alt="">
+	<img id="frist2" src="images/666.png" alt="">
+	<img id="frist3" src="images/666.png" alt="">
+	<img id="frist4" src="images/666.png" alt="">
+
+	<img class="bj" id="bj" src="images/132.jpg" alt="">
+	<div class="logo">
+		<ul class="txt">
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
+	<div class="start" id="start"></div>
+	<div class="jy" id="jy" style="z-index:120;"></div>
+	<!-- <div class="about" id="about"></div> -->
+
+	<div class="midt">
+		<input class="bgn" type="button" name=""><br>
+		<input class="stop" type="button" name="">
+	</div>
+	<a class="fg" href="#"></a>
+
+	<!-- 图标 -->
+	<ul class="icon">
+		<li class="icon_shop"></li>	
+	    <li class="icon_task"></li>
+	    <li class="icon_active"></li>
+	    <li class="icon_4"></li>
+		<li class="icon_5"></li>
+	</ul>
+
+	<div class="left">
+		<div class="mid_role"></div>
+		<ul class="play_1 play">
+			<!-- <li style="width: 125px; height: 175px; background: url(./images/14.png) -162px -5px;"></li> -->
+		</ul>
+		<p class="play_btn">
+			<span class="timer1"></span>
+			<input class="get" type="button" name="" value="抢地主"><br><br>
+			<input class="cancel" type="button" name="" value="不抢">
+		</p>
+		<p class="play_btn2">
+			<span class="timer2"></span>
+			<input class="play_out" type="button" name="" value="出牌"><br><br>
+			<input class="pass" type="button" name="" value="不出"><br><br>
+			<input class="tips" type="button" name="" value="提示">
+		</p>
+		<div class="branch" style="top: 370px; left: 0px"></div>
+        <span id="sp1"><div id="do"></div>积分:9000</span>
+	</div>
+
+	<div class="mid">
+		<div class="mid_top">
+			<ul class="all_poker">
+				<!-- <li class="back"></li> -->
+			</ul>
+		</div>
+		<div class="mid_desktop">
+			<ul class="desktop_poker">
+				<!-- <li style="width: 125px; height: 175px; background: url(./images/14.png) -162px -5px;"></li> -->
+			</ul>
+		</div>
+		<div class="mid_end">
+			<div class="mid_role"></div>
+			<ul class="play_2 play">
+				 <!--<li style="width: 125px; height: 175px; background: url(./images/14.png) -162px -5px;"></li>
+				<li class="select" style="width: 125px; height: 175px; background: url(./images/14.png) -162px -5px;"></li> -->
+			</ul>
+			<p class="play_btn">
+				<span class="timer1"></span>
+				<input class="get" type="button" name="" value="抢地主">
+				<input class="cancel" type="button" name="" value="不抢">
+			</p>
+			<p class="play_btn2">
+				<span class="timer2"></span>
+				<input class="play_out" type="button" name="" value="出牌">
+				<input class="pass" type="button" name="" value="不出">
+				<input class="tips" type="button" name="" value="提示">
+			</p>
+			<div class="branch" style="top: 840px; left: 115px"></div>
+            <span id="sp2"><div id="do"></div>积分:9000</span>
+		</div>
+	</div>
+
+	<div class="right">
+		<div class="mid_role"></div>
+		<ul class="play_3 play">
+			<!-- <li style="width: 125px; height: 175px; background: url(./images/14.png) -162px -5px;"></li> -->
+		</ul>
+		<p class="play_btn">
+			<span class="timer1"></span>
+			<input class="get" type="button" name="" value="抢地主"><br><br>
+			<input class="cancel" type="button" name="" value="不抢">
+		</p>
+		<p class="play_btn2">
+			<span class="timer2"></span>
+			<input class="play_out" type="button" name="" value="出牌"><br><br>
+			<input class="pass" type="button" name="" value="不出"><br><br>
+			<input class="tips" type="button" name="" value="提示">
+		</p>
+		<div class="branch" style="top: 370px; right: 0px;"></div>
+        <span id="sp3"><div id="do"></div>积分:9000</span>
+	</div>
+	<div class="alertMsg">
+		<p class="titl">系统提示</p>
+		<div class="msg"></div>
+		<input type="text" class="btn_ok" value="确定">
+	</div>
+	<!-- 结局框 -->
+	<div class="alertWind">
+		<div class="btn_again"></div>
+		<div class="btn_close"></div>
+	</div>
+
+	<div class="alertWinn">
+		<div class="btn_again"></div>
+		<div class="btn_close"></div>
+	</div>
+    <!--音乐音效-->
+	<div class="music" >
+		<audio src="./music/背景.mp3" autoplay loop></audio>
+	    <audio src="" autoplay></audio> 
+	</div>
+	<!--游戏动画-->
+	<div id="effects">
+	    <div class="straight"></div>
+	    <div class="evenOn"></div>
+	    <div class="plane"></div>
+	    <div class="bomb"></div>
+	    <div class="floor"></div>
+	    <div class="bombKing"></div>
+	</div>
+	<!-- 小人 -->
+	<div class="people"></div>
+
+</body>
+</html>
